@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
-
 import { motion } from "framer-motion";
 import Section from "@/layouts/Section";
 import TopGainerLoser from "@/components/explore/TopGainerLoser";
-import getGainersLosers from "@/actions/getGainerLoser";
+import { getGainerLoser } from "@/actions/getGainerLoser";
+import SkeletonExplore from "@/components/ui/skeleton-loader/SkeletonExplore";
 
 const stockTypes = [
   {
@@ -17,19 +17,16 @@ const stockTypes = [
   },
 ];
 
-useEffect;
-
 const ExploreStocks = () => {
   const [activeTab, setActiveTab] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [reqData, setReqData] = useState([]);
-  const [error, setError] = useState(false);
-
   const [data, setData] = useState([]);
+  // const [loading, setLoading] = useState(false);
+  // const [reqData, setReqData] = useState([]);
+  // const [error, setError] = useState(false);
 
   useEffect(() => {
     try {
-      getGainersLosers().then((data) => {
+      getGainerLoser().then((data) => {
         setData(data);
         console.log(data);
       });
@@ -39,11 +36,9 @@ const ExploreStocks = () => {
   }, []);
 
   // console.log(data);
-  // console.log(process.env.NEXT_PUBLIC_API_KEY);
 
   return (
     <Section>
-      {/* <div className="mx-40 px-10 2xl:px-60 my-14"> */}
       {/* navigation tabs */}
       <div className="flex space-x-1.5 w-fit rounded-lg py-1 px-2 bg-gray-100 dark:bg-inherit dark:border border-zinc-800 dark:drop-shadow-md backdrop-filter backdrop-blur-xl  dark:bg-opacity-30">
         {stockTypes.map((tab) => (
@@ -72,11 +67,14 @@ const ExploreStocks = () => {
         ))}
       </div>
 
-      <TopGainerLoser
-        choice={activeTab == 1 ? "gainer" : "loser"}
-        data={data}
-      />
-      {/* </div> */}
+      {data.length < 1 ? (
+        <SkeletonExplore />
+      ) : (
+        <TopGainerLoser
+          choice={activeTab == 1 ? "gainer" : "loser"}
+          data={data}
+        />
+      )}
     </Section>
   );
 };

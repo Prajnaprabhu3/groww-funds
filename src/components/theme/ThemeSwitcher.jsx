@@ -22,7 +22,7 @@ const ThemeSwitcher = () => {
           setTheme(theme === "light" ? "dark" : "light");
         }}
         type="button"
-        className="rounded-md p-2 hover:bg-gray-200 dark:hover:bg-zinc-800"
+        className="rounded p-2 hover:bg-gray-200 dark:hover:bg-zinc-800"
       >
         {theme === "dark" ? <BiSun /> : <BiMoon />}
       </button>

@@ -1,14 +1,14 @@
 "use client";
 
-import { companies } from "@/data/companies";
+// import { companies } from "@/data/companies";
 import CompanyCard from "./CompanyCard";
 
 const TopGainerLoser = ({ choice, data }) => {
   if (choice == "gainer") {
     return (
       <div className="grid grid-cols-1  md:grid-cols-3 2xl:grid-cols-3  gap-8 2xl:gap-10 py-10">
-        {companies.top_gainers &&
-          companies.top_gainers.map((company) => (
+        {data.top_gainers &&
+          data.top_gainers.map((company) => (
             <CompanyCard
               key={company.ticker}
               ticker={company.ticker}
@@ -23,8 +23,8 @@ const TopGainerLoser = ({ choice, data }) => {
 
   return (
     <div className="grid grid-cols-4 gap-8 py-10">
-      {companies.top_losers &&
-        companies.top_losers.map((company) => (
+      {data.top_losers &&
+        data.top_losers.map((company) => (
           <CompanyCard
             key={company.ticker}
             ticker={company.ticker}
