@@ -5,7 +5,6 @@ const CompanyHeader = ({ symbol, name, price, percentage, type }) => {
   return (
     <div className="flex justify-between items-center px-4">
       <div className="flex flex-col gap-1">
-        {/* company full name  */}
         <h2 className="text-lg font-medium">{name}</h2>
         <div className="flex items-center text-sm">
           <p>{symbol},</p>

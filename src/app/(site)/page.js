@@ -5,6 +5,7 @@ import Section from "@/layouts/Section";
 import TopGainerLoser from "@/components/explore/TopGainerLoser";
 import { getGainerLoser } from "@/actions/getGainerLoser";
 import SkeletonExplore from "@/components/ui/skeleton-loader/SkeletonExplore";
+import Error from "@/components/ui/error";
 
 const stockTypes = [
   {
@@ -18,11 +19,9 @@ const stockTypes = [
 ];
 
 const ExploreStocks = () => {
-  const [activeTab, setActiveTab] = useState(1);
   const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(false);
-  // const [reqData, setReqData] = useState([]);
-  // const [error, setError] = useState(false);
+  const [activeTab, setActiveTab] = useState(1);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     try {
@@ -31,16 +30,23 @@ const ExploreStocks = () => {
         console.log(data);
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      setError(true);
     }
+
+    if (data.length == 0) setError(true);
   }, []);
 
-  // console.log(data);
+  console.log(data);
+
+  if (error) {
+    return <Error />;
+  }
 
   return (
     <Section>
       {/* navigation tabs */}
-      <div className="flex space-x-1.5 w-fit rounded-lg py-1 px-2 bg-gray-100 dark:bg-inherit dark:border border-zinc-800 dark:drop-shadow-md backdrop-filter backdrop-blur-xl  dark:bg-opacity-30">
+      <div className="flex space-x-1.5 w-fit rounded-lg py-1 mx-10 lg:mx-0 px-2 bg-gray-100 dark:bg-inherit dark:border border-zinc-800 dark:drop-shadow-md backdrop-filter backdrop-blur-xl  dark:bg-opacity-30">
         {stockTypes.map((tab) => (
           <button
             key={tab.id}
