@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.0.5",
+    "antd": "^5.10.2",
+    "apexcharts": "^3.44.0",
     "axios": "^1.6.0",
     "framer-motion": "^10.16.4",
     "next": "14.0.0",
     "next-themes": "^0.2.1",
+    "rc-slider": "^10.3.1",
     "react": "^18",
     "react-apexcharts": "^1.4.1",
     "react-dom": "^18",

@@ -1,17 +1,38 @@
+// export const formatStockData = (stockData) => {
+//   const reqForm = [];
+//   if (stockData["Weekly Time Series"]) {
+//     Object.entries(stockData["Weekly Time Series"]).map((time, value) => {
+//       reqForm.push({
+//         x: time,
+//         y: [
+//           value["1. open"],
+//           value["2. high"],
+//           value["3. low"],
+//           value["4. close"],
+//         ],
+//       });
+//     });
+//   }
+//   return reqForm;
+// };
+
 export const formatStockData = (stockData) => {
-  const reqForm = [];
-  if (stockData["Weekly Time Series"]) {
-    Object.entries(stockData["Weekly Time Series"]).map((time, value) => {
-      reqForm.push({
-        x: time,
-        y: [
-          value["1. open"],
-          value["2. high"],
-          value["3. low"],
-          value["4. close"],
-        ],
-      });
-    });
+  const formattedData = [];
+
+  if (stockData["Weekly Adjusted Time Series"]) {
+    Object.entries(stockData["Weekly Adjusted Time Series"]).map(
+      ([key, value]) => {
+        formattedData.push({
+          x: key,
+          y: [
+            value["1. open"],
+            value["2. high"],
+            value["3. low"],
+            value["4. close"],
+          ],
+        });
+      }
+    );
   }
-  return reqForm;
+  return formattedData;
 };

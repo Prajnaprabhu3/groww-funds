@@ -1,6 +1,7 @@
 export const candleStickOptions = {
   chart: {
     type: "candlestick",
+    height: 350,
   },
   title: {
     text: "CandleStick Chart",

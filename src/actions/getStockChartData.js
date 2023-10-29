@@ -1,8 +1,7 @@
 export const getStockChartData = async (symbol) => {
-  const res = fetch(
-    `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${symbol}&apikey=${process.env.API_KEY}`
+  const response = await fetch(
+    `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${symbol}&apikey=${process.env.API_KEY}`
   );
-
-  const data = (await res).json();
+  const data = await response.json();
   return data;
 };
