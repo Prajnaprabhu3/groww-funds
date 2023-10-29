@@ -9,6 +9,7 @@ import CompanyFundamentals from "@/components/company/CompanyFundamentals";
 import CompanyHeader from "@/components/company/CompanyHeader";
 import CompanyChart from "@/components/company/CompanyChart";
 import SkeletonCompany from "@/components/ui/skeleton-loader/SkeletonCompany";
+import Error from "@/components/ui/error";
 
 const Company = () => {
   const [fundamentalData, setFundamentalData] = useState([]);
@@ -51,6 +52,10 @@ const Company = () => {
 
   if (fundamentalData.length < 1 || tickerData.length < 1) {
     return <SkeletonCompany />;
+  }
+
+  if (error) {
+    return <Error />;
   }
   return (
     // <Section className="flex flex-col items-center lg:flex-row">

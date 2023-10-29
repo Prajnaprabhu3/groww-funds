@@ -6,6 +6,7 @@ import TopGainerLoser from "@/components/explore/TopGainerLoser";
 import { getGainerLoser } from "@/actions/getGainerLoser";
 import SkeletonExplore from "@/components/ui/skeleton-loader/SkeletonExplore";
 import Error from "@/components/ui/error";
+import { companies } from "@/data/companies";
 
 const stockTypes = [
   {
@@ -28,23 +29,28 @@ const ExploreStocks = () => {
       getGainerLoser().then((data) => {
         setData(data);
         console.log(data);
+        // setData(companies);
       });
     } catch (error) {
       // console.log(error);
       setError(true);
     }
 
-    if (data.length == 0) setError(true);
+    if (
+      data?.top_gainers?.length === undefined ||
+      data?.top_losers?.length === undefined
+    )
+      setError(true);
   }, []);
 
-  console.log(data);
+  // console.log(data?.top_gainers?.length);
 
   if (error) {
     return <Error />;
   }
 
   return (
-    <Section>
+    <Section className="flex flex-col">
       {/* navigation tabs */}
       <div className="flex space-x-1.5 w-fit rounded-lg py-1 mx-10 lg:mx-0 px-2 bg-gray-100 dark:bg-inherit dark:border border-zinc-800 dark:drop-shadow-md backdrop-filter backdrop-blur-xl  dark:bg-opacity-30">
         {stockTypes.map((tab) => (
@@ -76,10 +82,17 @@ const ExploreStocks = () => {
       {data.length < 1 ? (
         <SkeletonExplore />
       ) : (
-        <TopGainerLoser
-          choice={activeTab == 1 ? "gainer" : "loser"}
-          data={data}
-        />
+        <div>
+          <TopGainerLoser
+            choice={activeTab == 1 ? "gainer" : "loser"}
+            data={data}
+          />
+
+          {/* only 20 elements api response  */}
+          {/* <button className="flex mx-auto bg-gGreen px-4 py-1 rounded-md text-white">
+            Load more
+          </button> */}
+        </div>
       )}
     </Section>
   );
