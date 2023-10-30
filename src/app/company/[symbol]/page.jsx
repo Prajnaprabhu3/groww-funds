@@ -48,7 +48,7 @@ const Company = () => {
       console.log(error);
     }
 
-    if (fundamentalData.length < 0 || tickerData.length < 1) setError(true);
+    // if (fundamentalData.length < 1 || tickerData.length < 1) setError(true);
   }, [lastItem]);
 
   if (fundamentalData.length < 1 || tickerData.length < 1) {

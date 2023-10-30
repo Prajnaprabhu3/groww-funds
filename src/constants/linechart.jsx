@@ -9,7 +9,7 @@ export const lineChartOptions = {
   },
   stroke: {
     curve: "smooth",
-    color: "#ffff",
+    // colors: ["#ffff"],
   },
   xaxis: {
     type: "datetime",

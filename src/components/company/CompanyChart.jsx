@@ -52,9 +52,9 @@ const CompanyChart = ({ ticker }) => {
   return (
     <div className="h-fit border dark:border-zinc-800 rounded-md my-10 p-6 flex flex-col  gap-6">
       {chartType === "candlestick" ? (
-        <CandleStickChart seriesD={seriesData2} />
+        <CandleStickChart seriesD={seriesData} />
       ) : (
-        <LineChart seriesD={seriesData2} />
+        <LineChart seriesD={seriesData} />
       )}
 
       {/* interval options  */}

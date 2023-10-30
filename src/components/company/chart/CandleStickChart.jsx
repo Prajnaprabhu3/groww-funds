@@ -1,13 +1,12 @@
 "use client";
-import { useState, useEffect, useMemo } from "react";
+// import { useState, useEffect, useMemo } from "react";
 import ReactApexChart from "react-apexcharts";
 import { candleStickOptions } from "@/constants/candlestick";
-import { getStockChartData } from "@/actions/getStockChartData";
-import { formatStockData } from "@/lib/formatStockChartdata";
-import { useRouter } from "next/navigation";
+// import { getStockChartData } from "@/actions/getStockChartData";
+// import { formatStockData } from "@/lib/formatStockChartdata";
 
 const CandleStickChart = ({ seriesD }) => {
-  const [stockData, setStockData] = useState({});
+  // const [stockData, setStockData] = useState({});
 
   // useEffect(() => {
   //   getStockChartData(ticker).then((data) => setStockData(data));
@@ -23,30 +22,21 @@ const CandleStickChart = ({ seriesD }) => {
   //   router.refresh();
   // };
 
+  console.log(seriesD);
   return (
-    // <ReactApexChart
-    //   // series={[{ data: seriesData }]}
-    //   series={seriesData2}
-    //   options={candleStickOptions}
-    //   type={type}
-    //   onChange={handleChange}
-    // />
+    <ReactApexChart
+      series={[{ data: seriesD }]}
+      // series={seriesData2}
+      options={candleStickOptions}
+      type="candlestick"
+      // onChange={handleChange}
+    />
 
     // <ReactApexChart
-    //   series={[
-    //     {
-    //       data: dataC,
-    //     },
-    //   ]}
     //   options={candleStickOptions}
+    //   series={seriesD}
     //   type="candlestick"
     // />
-
-    <ReactApexChart
-      options={candleStickOptions}
-      series={seriesD}
-      type="candlestick"
-    />
   );
 };
 

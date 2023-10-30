@@ -1,13 +1,13 @@
-"use client";
+// "use client";
 import { useState, useEffect, useMemo } from "react";
 import ReactApexChart from "react-apexcharts";
-import { getStockChartData } from "@/actions/getStockChartData";
-import { formatStockData } from "@/lib/formatStockChartdata";
-import { seriesData2 } from "@/data/chart";
+// import { getStockChartData } from "@/actions/getStockChartData";
+// import { formatStockData } from "@/lib/formatStockChartdata";
+// import { seriesData2 } from "@/data/chart";
 import { lineChartOptions } from "@/constants/linechart";
 
 const LineChart = ({ seriesD }) => {
-  const [stockData, setStockData] = useState({});
+  //   const [stockData, setStockData] = useState({});
 
   //   useEffect(() => {
   //     getStockChartData(ticker).then((data) => setStockData(data));
@@ -27,7 +27,7 @@ const LineChart = ({ seriesD }) => {
       series={seriesD}
       options={lineChartOptions}
       type="line"
-      stroke
+      //   color="#ffff"
     />
   );
 };
