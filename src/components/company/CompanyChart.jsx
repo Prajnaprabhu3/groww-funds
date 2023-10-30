@@ -1,10 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
-import LineChart from "./chart/LineChart";
+import CandleStickChart from "./chart/CandleStickChart";
 import { AiOutlineStock } from "react-icons/ai";
 import { RiStockLine } from "react-icons/ri";
+import { seriesData2 } from "@/data/chart";
+import LineChart from "./chart/LineChart";
+import { formatStockData } from "@/lib/formatStockChartdata";
+import { getStockChartData } from "@/actions/getStockChartData";
 
 const intervals = [
   {
@@ -33,14 +37,25 @@ const CompanyChart = ({ ticker }) => {
   const [activeTab, setActiveTab] = useState(1);
   const [chartType, setChartType] = useState("candlestick");
 
+  const [stockData, setStockData] = useState({});
+
+  useEffect(() => {
+    getStockChartData(ticker).then((data) => setStockData(data));
+  }, []);
+
+  const seriesData = useMemo(() => formatStockData(stockData), [stockData]);
+
   function changeChartType() {
     setChartType(chartType === "candlestick" ? "line" : "candlestick");
-    router.reload();
   }
 
   return (
     <div className="h-fit border dark:border-zinc-800 rounded-md my-10 p-6 flex flex-col  gap-6">
-      <LineChart ticker={ticker} type={chartType} />
+      {chartType === "candlestick" ? (
+        <CandleStickChart seriesD={seriesData2} />
+      ) : (
+        <LineChart seriesD={seriesData2} />
+      )}
 
       {/* interval options  */}
       <div className="flex items-center justify-center gap-x-4">
@@ -76,7 +91,7 @@ const CompanyChart = ({ ticker }) => {
           className="border dark:border-zinc-800 p-2 rounded-md text-gGreen"
           onClick={changeChartType}
         >
-          {chartType === "candlestick" ? <RiStockLine /> : <AiOutlineStock />}
+          {chartType === "candlestick" ? <AiOutlineStock /> : <RiStockLine />}
         </button>
       </div>
     </div>

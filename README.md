@@ -7,6 +7,7 @@ This is an online stock,etf broking web application built specifically for the f
 1. Explore Companies: Know the stocks/etf of the company who are the Top gainers or the Top Losers .
 2. Company Detail: User will be able to see the details of company card they clicked. Details include everything from fundamentals of the company, sector & industry they belong, & a graphical representation of the stock price.
 3. Search: User can search for the stock/etf of their choice and get details of the same
+4. Theme: User can set theme to preference of their choice( dark or light)
 
 ### How the app looks
 
