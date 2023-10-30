@@ -48,7 +48,7 @@ const Company = () => {
       console.log(error);
     }
 
-    // if (fundamentalData.length == 0 || tickerData.length == 0) setError(true);
+    if (fundamentalData.length == 0 || tickerData.length == 0) setError(true);
   }, [lastItem]);
 
   if (fundamentalData.length < 1 || tickerData.length < 1) {
@@ -70,6 +70,8 @@ const Company = () => {
         <CompanyHeader
           symbol={fundamentalData.Symbol}
           name={fundamentalData.Name}
+          assetType={fundamentalData.AssetType}
+          exchange={fundamentalData.Exchange}
           price={tickerData.price}
           percentage={tickerData.change_percentage}
           type={

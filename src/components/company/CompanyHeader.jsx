@@ -1,16 +1,24 @@
 import DetailsLayout from "@/layouts/DetailsSection";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 
-const CompanyHeader = ({ symbol, name, price, percentage, type }) => {
+const CompanyHeader = ({
+  symbol,
+  name,
+  assetType,
+  exchange,
+  price,
+  percentage,
+  type,
+}) => {
   return (
     <div className="flex justify-between items-center px-4">
       <div className="flex flex-col gap-1">
         <h2 className="text-lg font-medium">{name}</h2>
         <div className="flex items-center text-sm">
           <p>{symbol},</p>
-          <p className="">Common Stock</p>
+          <p className="">{assetType}</p>
         </div>
-        <p className="text-sm">NSQ</p>
+        <p className="text-sm">{exchange}</p>
       </div>
 
       <div className="flex flex-col gap-1">
