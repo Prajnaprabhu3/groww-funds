@@ -44,15 +44,19 @@ const Company = () => {
         setTickerData(reqDetails.filter((item) => item.ticker === lastItem)[0]);
       })();
     } catch (error) {
+      setError(true);
       console.log(error);
     }
 
-    if (fundamentalData.length == 0 || tickerData.length == 0) setError(true);
+    // if (fundamentalData.length == 0 || tickerData.length == 0) setError(true);
   }, [lastItem]);
 
   if (fundamentalData.length < 1 || tickerData.length < 1) {
     return <SkeletonCompany />;
   }
+
+  console.log(fundamentalData);
+  console.log(tickerData);
 
   if (error) {
     return <Error />;

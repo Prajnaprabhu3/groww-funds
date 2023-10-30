@@ -28,22 +28,25 @@ const ExploreStocks = () => {
     try {
       getGainerLoser().then((data) => {
         setData(data);
-        console.log(data);
         // setData(companies);
+        console.log(data);
       });
     } catch (error) {
-      // console.log(error);
       setError(true);
     }
 
-    if (
-      data?.top_gainers?.length === undefined ||
-      data?.top_losers?.length === undefined
-    )
-      setError(true);
+    // if (
+    //   data?.top_gainers?.length === undefined ||
+    //   data?.top_losers?.length === undefined
+    // ) {
+    //   setError(true);
+    // }
+    // if (!data) {
+    //   setError(true);
+    // }
   }, []);
 
-  // console.log(data?.top_gainers?.length);
+  console.log(data);
 
   if (error) {
     return <Error />;
@@ -83,15 +86,19 @@ const ExploreStocks = () => {
         <SkeletonExplore />
       ) : (
         <div>
-          <TopGainerLoser
-            choice={activeTab == 1 ? "gainer" : "loser"}
-            data={data}
-          />
+          {error ? (
+            <Error />
+          ) : (
+            <TopGainerLoser
+              choice={activeTab == 1 ? "gainer" : "loser"}
+              data={data}
+            />
 
-          {/* only 20 elements api response  */}
-          {/* <button className="flex mx-auto bg-gGreen px-4 py-1 rounded-md text-white">
-            Load more
-          </button> */}
+            // {/* only 20 elements api response  */}
+            // {/* <button className="flex mx-auto bg-gGreen px-4 py-1 rounded-md text-white">
+            //   Load more
+            // </button> */}
+          )}
         </div>
       )}
     </Section>

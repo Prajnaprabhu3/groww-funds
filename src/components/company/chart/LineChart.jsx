@@ -14,11 +14,11 @@ const LineChart = ({ ticker, type }) => {
     getStockChartData(ticker).then((data) => setStockData(data));
   }, []);
 
-  console.log(stockData);
+  // console.log(stockData);
 
   const seriesData = useMemo(() => formatStockData(stockData), [stockData]);
 
-  console.log(seriesData);
+  // console.log(seriesData);
 
   // const handleChange = () => {
   //   router.refresh();
