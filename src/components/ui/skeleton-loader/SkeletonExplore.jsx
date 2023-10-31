@@ -1,12 +1,12 @@
 const SkeletonExplore = () => {
   return (
-    <div className="grid grid-cols-3 gap-10 py-10">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 py-10">
       {Array(20)
         .fill(0)
         .map((el, index) => (
           <div key={index}>
             <div
-              className="flex flex-row bg-white shadow-md items-center gap-2 h-20 dark:bg-zinc-900 p-4 border dark:border-zinc-800 rounded-lg
+              className="flex flex-row bg-white shadow-md items-center gap-2 mx-10 lg:mx-0 h-20 dark:bg-zinc-900 p-4 border dark:border-zinc-800 rounded-lg
                cursor-pointer delay-75 hover:-translate-y-1 transition-transform
               duration-300 ease-out"
             >
@@ -17,20 +17,6 @@ const SkeletonExplore = () => {
               </div>
             </div>
           </div>
-          //     <div
-          //       key={index}
-          //       className="h-20 dark:bg-zinc-900 p-4 border dark:border-zinc-800 rounded-lg
-          // cursor-pointer delay-75 hover:-translate-y-1 transition-transform
-          // duration-300 ease-out "
-          //     >
-          //       <h2 className="font-medium pb-2 animate-pulse"></h2>
-          //       <div className="flex gap-x-4 animate-pulse">
-          //         <p className="text-md font-semibold animate-pulse"> </p>
-          //         <div className="flex items-center gap-x-2 text-sm animate-pulse">
-          //           <p className="animate-pulse"></p>
-          //         </div>
-          //       </div>
-          //     </div>
         ))}
     </div>
   );

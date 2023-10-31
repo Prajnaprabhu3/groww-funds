@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Section from "@/layouts/Section";
-import { companies } from "@/data/companies";
 import CompanyDetails from "@/components/company/CompanyDetails";
 import CompanyFundamentals from "@/components/company/CompanyFundamentals";
 import CompanyHeader from "@/components/company/CompanyHeader";
@@ -48,15 +47,15 @@ const Company = () => {
       console.log(error);
     }
 
-    // if (fundamentalData.length < 1 || tickerData.length < 1) setError(true);
+    // if (!fundamentalData.Symbol || !tickerData.ticker) setError(true);
   }, [lastItem]);
 
   if (fundamentalData.length < 1 || tickerData.length < 1) {
     return <SkeletonCompany />;
   }
 
-  console.log(fundamentalData);
-  console.log(tickerData);
+  console.log(fundamentalData.Symbol);
+  console.log(tickerData.ticker);
 
   if (error) {
     return <Error />;

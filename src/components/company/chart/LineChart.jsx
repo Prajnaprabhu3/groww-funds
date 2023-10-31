@@ -16,19 +16,18 @@ const LineChart = ({ seriesD }) => {
   //   const seriesData = useMemo(() => formatStockData(stockData), [stockData]);
 
   return (
-    // <ReactApexChart
-    //   // series={[{ data: seriesData }]}
-    //   series={seriesData2}
-    //   options={candleStickOptions}
-    //   type={type}
-    //   onChange={handleChange}
-    // />
     <ReactApexChart
-      series={seriesD}
+      series={[{ data: seriesD }]}
       options={lineChartOptions}
       type="line"
-      //   color="#ffff"
+      // onChange={handleChange}
     />
+    // <ReactApexChart
+    //   series={seriesD}
+    //   options={lineChartOptions}
+    //   type="line"
+    //   //   color="#ffff"
+    // />
   );
 };
 

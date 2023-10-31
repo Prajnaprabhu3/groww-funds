@@ -7,7 +7,6 @@ import { getGainerLoser } from "@/actions/getGainerLoser";
 import SkeletonExplore from "@/components/ui/skeleton-loader/SkeletonExplore";
 import Error from "@/components/ui/error";
 import { companies } from "@/data/companies";
-import { Divider } from "antd";
 
 const stockTypes = [
   {
@@ -57,7 +56,7 @@ const ExploreStocks = () => {
       ) : (
         <Section className="flex flex-col">
           {/* navigation tabs */}
-          <div className="flex space-x-1.5 w-fit rounded-lg py-1 mx-10 lg:mx-0 px-2 bg-gray-100 dark:bg-inherit dark:border border-zinc-800 dark:drop-shadow-md backdrop-filter backdrop-blur-xl  dark:bg-opacity-30">
+          <div className="flex  space-x-1.5 w-fit rounded-lg py-1 mx-10 lg:mx-0 px-2 bg-gray-100 dark:bg-inherit dark:border border-zinc-800 dark:drop-shadow-md backdrop-filter backdrop-blur-xl  dark:bg-opacity-30">
             {stockTypes.map((tab) => (
               <button
                 key={tab.id}

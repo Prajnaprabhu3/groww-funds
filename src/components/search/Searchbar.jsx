@@ -3,16 +3,14 @@
 import { useState } from "react";
 import { getSearchedData } from "@/actions/getSearchedData";
 import { BiSearch } from "react-icons/bi";
-import { searchD } from "@/data/search";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
 
-const Searchbar = ({ keyword }) => {
+const Searchbar = () => {
   const [query, setQuery] = useState("");
   const [symbol, setSymbol] = useState(" ");
   const [data, setData] = useState([]);
   const [keyOnSearch, setKeyOnSearch] = useState(false);
-  const router = useRouter();
   const pathname = usePathname();
   const lastItem = pathname.substring(pathname.lastIndexOf("/"));
   function handleOnKeyUp() {

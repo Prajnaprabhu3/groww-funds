@@ -7,7 +7,7 @@ export const getSearchedData = async (symbol) => {
 
   const data = await res.json();
   const reqData = data.bestMatches;
-  //   const data = searchD;
+  // const reqData = searchD;
 
   return reqData;
 };
